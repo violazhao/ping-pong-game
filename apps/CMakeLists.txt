@@ -1,6 +1,9 @@
 get_filename_component(CINDER_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../../" ABSOLUTE)
 include("${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake")
 
+file(GLOB RESOURCE_LIST CONFIGURE_DEPENDS
+        "${CINDER_PATH}/blocks/PretzelGui/resources/**")
+
 file(GLOB SOURCE_LIST CONFIGURE_DEPENDS
         "${FinalProject_SOURCE_DIR}/apps/*.h"
         "${FinalProject_SOURCE_DIR}/apps/*.hpp"
@@ -9,11 +12,12 @@ file(GLOB SOURCE_LIST CONFIGURE_DEPENDS
 
 
 ci_make_app(
-    APP_NAME    cinder-myapp
-    CINDER_PATH ${CINDER_PATH}
-    SOURCES     ${SOURCE_LIST}
-    LIBRARIES   mylibrary
-    BLOCKS
+        APP_NAME    cinder-myapp
+        CINDER_PATH ${CINDER_PATH}
+        SOURCES     ${SOURCE_LIST}
+        LIBRARIES   mylibrary
+        BLOCKS      PretzelGui
+        RESOURCES   ${RESOURCE_LIST}
 )
 
 target_compile_features(cinder-myapp PRIVATE cxx_std_14)
