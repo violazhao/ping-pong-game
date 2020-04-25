@@ -18,6 +18,11 @@ class MyApp : public cinder::app::App {
   void keyDown(cinder::app::KeyEvent) override;
 
 private:
+    void DrawBackground() const;
+    void DrawNet() const;
+    void DrawPaddleOne() const;
+
+private:
     float mRadius;
     pretzel::PretzelGuiRef gui;
 };
