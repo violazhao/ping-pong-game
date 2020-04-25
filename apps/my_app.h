@@ -20,10 +20,12 @@ class MyApp : public cinder::app::App {
 private:
     void DrawBackground() const;
     void DrawNet() const;
+    void DrawBall() const;
     void DrawPaddleOne() const;
+    void DrawPaddleTwo() const;
 
 private:
-    float mRadius;
+    float mRadius = 25;
     pretzel::PretzelGuiRef gui;
 };
 

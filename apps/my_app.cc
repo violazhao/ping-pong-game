@@ -18,8 +18,7 @@ namespace myapp {
 MyApp::MyApp() { }
 
 void MyApp::setup() {
-    /*mRadius = 25;
-    gui = pretzel::PretzelGui::create("Puzzle settings");
+    /*gui = pretzel::PretzelGui::create("Puzzle settings");
     gui->setSize(cinder::vec2(180, 150));
     gui->setPos(cinder::vec2(0, 0));
     gui->addSlider("Puzzle Size", &mRadius, 2, 100);
@@ -37,7 +36,9 @@ void MyApp::draw() {
     cinder::gl::clear();
     DrawBackground();
     DrawNet();
-    //DrawPaddleOne();
+    DrawBall();
+    DrawPaddleOne();
+    DrawPaddleTwo();
 }
 
 void MyApp::DrawBackground() const {
@@ -49,9 +50,19 @@ void MyApp::DrawNet() const {
     cinder::gl::drawLine(cinder::vec2(getWindowWidth()/2, getWindowHeight()), cinder::vec2(getWindowWidth()/2, 0));
 }
 
+void MyApp::DrawBall() const {
+    cinder::gl::color(1, 1, 1);
+    cinder::gl::drawSolidCircle(cinder::vec2(getWindowCenter()), mRadius);
+}
+
 void MyApp::DrawPaddleOne() const {
-    cinder::gl::clear(cinder::Color(124, 2, 4));
-    Rectf drawSolidRect(Rectf(50, 900, 50, 500));
+    cinder::gl::color(1, 1, 1);
+    cinder::gl::drawSolidRect(Rectf(getWindowWidth()/2-20.0f, getWindowHeight()/2-20.0f, getWindowWidth()/2+20.0f, getWindowHeight()/2+20.0f));
+}
+
+void MyApp::DrawPaddleTwo() const {
+    cinder::gl::color(1, 1, 1);
+    cinder::gl::drawSolidRect(Rectf(getWindowWidth()/2-20.0f, getWindowHeight()/2-20.0f, getWindowWidth()/2+20.0f, getWindowHeight()/2+20.0f));
 }
 
 void MyApp::keyDown(KeyEvent event) { }
