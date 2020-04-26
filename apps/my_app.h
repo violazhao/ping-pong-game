@@ -23,9 +23,15 @@ private:
     void DrawBall() const;
     void DrawPaddleOne() const;
     void DrawPaddleTwo() const;
+    void UpdateBall();
 
 private:
-    float mRadius = 25;
+    float mRadius = 10;
+    float ball_xpos = getWindowWidth()/2;
+    float ball_ypos = getWindowHeight()/2;
+    float ball_xdir = -1.0f;
+    float ball_ydir = 1.0f;
+    int ball_speed = 8;
     pretzel::PretzelGuiRef gui;
 };
 
