@@ -54,17 +54,17 @@ void MyApp::DrawNet() const {
 
 void MyApp::DrawBall() const {
     cinder::gl::color(1, 1, 1);
-    cinder::gl::drawSolidCircle(cinder::vec2(ball_xpos, ball_ypos), mRadius);
+    cinder::gl::drawSolidCircle(cinder::vec2(ball_xpos, ball_ypos), ball_radius);
 }
 
 void MyApp::DrawPaddleOne() const {
     cinder::gl::color(1, 1, 1);
-    cinder::gl::drawSolidRect(Rectf(getWindowWidth()/1.06f-5, getWindowHeight()/2-30.0f, getWindowWidth()/1.06f+5, getWindowHeight()/2+30.0f));
+    cinder::gl::drawSolidRect(Rectf(paddle1_x1, paddle1_y1, paddle1_x2, paddle1_y2));
 }
 
 void MyApp::DrawPaddleTwo() const {
     cinder::gl::color(1, 1, 1);
-    cinder::gl::drawSolidRect(Rectf(getWindowWidth()/20.0f-5, getWindowHeight()/2-30.0f, getWindowWidth()/20.0f+5, getWindowHeight()/2+30.0f));
+    cinder::gl::drawSolidRect(Rectf(paddle2_x1, paddle2_y1, paddle2_x2, paddle2_y2));
 }
 
 void MyApp::UpdateBall() {
@@ -85,6 +85,12 @@ void MyApp::UpdateBall() {
     if (ball_ypos > getWindowHeight()) {
         ball_ypos = getWindowHeight();
         ball_ydir = -fabs(ball_ydir);
+    }
+    if (ball_xpos > paddle1_x1 && ball_ypos > paddle1_y1 && ball_xpos > paddle1_x2 && ball_ypos < paddle1_y2) {
+        ball_xdir = -fabs(ball_xdir);
+    }
+    if (ball_xpos < paddle2_x1 && ball_ypos > paddle2_y1 && ball_xpos < paddle2_x2 && ball_ypos < paddle2_y2) {
+        ball_xdir = fabs(ball_xdir);
     }
 }
 
