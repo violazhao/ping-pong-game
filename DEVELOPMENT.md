@@ -8,3 +8,4 @@
 - **4/24/20** Set up PretzelGui instead as my external library and was able to use it in my code successfully
 - **4/25/20** Made ball and paddles and set them to their right positions
 - **4/26/20** Got the ball to bounce around the screen
+- **4/27/20** Got the ball to bounce off the paddles

@@ -30,7 +30,7 @@ private:
     float ball_xpos = getWindowWidth()/2;
     float ball_ypos = getWindowHeight()/2;
     float ball_xdir = -1.0f;
-    float ball_ydir = 0;
+    float ball_ydir = 1.0f;
     int ball_speed = 8;
 
     float paddle1_x1 = getWindowWidth()/1.06f-5;
