@@ -91,27 +91,35 @@ void MyApp::UpdateBall() {
         ball_ydir = -fabs(ball_ydir);
     }
     if (ball_xpos > paddle1_x1 && ball_ypos > paddle1_y1 && ball_xpos > paddle1_x2 && ball_ypos < paddle1_y2) {
+        ball_xpos = paddle1_x1;
         ball_xdir = -fabs(ball_xdir);
     }
     if (ball_xpos < paddle2_x1 && ball_ypos > paddle2_y1 && ball_xpos < paddle2_x2 && ball_ypos < paddle2_y2) {
+        ball_xpos = paddle2_x2;
         ball_xdir = fabs(ball_xdir);
     }
 }
 
 void MyApp::keyDown(KeyEvent event) {
     switch (event.getCode()) {
-        case KeyEvent::KEY_UP:
-        case KeyEvent::KEY_k:
-        case KeyEvent::KEY_w: {
-            paddle1_y1 = paddle1_y1 - 30;
-            paddle1_y2 = paddle1_y2 - 30;
+        case KeyEvent::KEY_UP: {
+            paddle1_y1 = paddle1_y1 - 50;
+            paddle1_y2 = paddle1_y2 - 50;
             break;
         }
-        case KeyEvent::KEY_DOWN:
-        case KeyEvent::KEY_j:
+        case KeyEvent::KEY_DOWN: {
+            paddle1_y1 = paddle1_y1 + 50;
+            paddle1_y2 = paddle1_y2 + 50;
+            break;
+        }
+        case KeyEvent::KEY_w: {
+            paddle2_y1 = paddle2_y1 - 50;
+            paddle2_y2 = paddle2_y2 - 50;
+            break;
+        }
         case KeyEvent::KEY_s: {
-            paddle1_y1 = paddle1_y1 + 30;
-            paddle1_y2 = paddle1_y2 + 30;
+            paddle2_y1 = paddle2_y1 + 50;
+            paddle2_y2 = paddle2_y2 + 50;
             break;
         }
     }
