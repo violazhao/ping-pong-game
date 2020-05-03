@@ -4,7 +4,7 @@
 
 #include <cinder/app/App.h>
 #include <pretzel/PretzelGui.h>
-
+#include <mylibrary/player.h>
 
 namespace myapp {
 
@@ -13,6 +13,8 @@ using cinder::ColorA;
 using cinder::Rectf;
 using cinder::TextBox;
 using cinder::app::KeyEvent;
+using mylibrary::Direction;
+using mylibrary::Location;
 using namespace std;
 
 const char kDbPath[] = "app.db";
@@ -97,6 +99,33 @@ void MyApp::UpdateBall() {
     }
 }
 
-void MyApp::keyDown(KeyEvent event) { }
+void MyApp::keyDown(KeyEvent event) {
+    switch (event.getCode()) {
+        case KeyEvent::KEY_UP:
+        case KeyEvent::KEY_k:
+        case KeyEvent::KEY_w: {
+            engine_.SetDirection(Direction::kLeft);
+            break;
+        }
+        case KeyEvent::KEY_DOWN:
+        case KeyEvent::KEY_j:
+        case KeyEvent::KEY_s: {
+            engine_.SetDirection(Direction::kRight);
+            break;
+        }
+        case KeyEvent::KEY_LEFT:
+        case KeyEvent::KEY_h:
+        case KeyEvent::KEY_a: {
+            engine_.SetDirection(Direction::kUp);
+            break;
+        }
+        case KeyEvent::KEY_RIGHT:
+        case KeyEvent::KEY_l:
+        case KeyEvent::KEY_d: {
+            engine_.SetDirection(Direction::kDown);
+            break;
+        }
+    }
+}
 
 }  // namespace myapp

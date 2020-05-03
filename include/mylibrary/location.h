@@ -1,6 +1,6 @@
 //
 // Created by Viola F Zhao on 5/2/20.
-//
+// taken from snake
 
 #ifndef FINALPROJECT_LOCATION_H
 #define FINALPROJECT_LOCATION_H
@@ -44,6 +44,5 @@ private:
 std::ostream& operator<<(std::ostream& os, const Location& location);
 
 } // namespace mylibrary
-
 
 #endif //FINALPROJECT_LOCATION_H

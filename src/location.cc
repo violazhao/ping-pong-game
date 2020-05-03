@@ -1,8 +1,8 @@
 //
 // Created by Viola F Zhao on 5/2/20.
-//
+// taken from snake
 
-#include "location.h"
+#include <mylibrary/location.h>
 
 namespace mylibrary {
 
