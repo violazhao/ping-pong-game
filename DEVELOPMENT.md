@@ -9,3 +9,4 @@
 - **4/25/20** Made ball and paddles and set them to their right positions
 - **4/26/20** Got the ball to bounce around the screen
 - **4/27/20** Got the ball to bounce off the paddles
+- **5/2/20** Set up SQLite3 and created leaderboard and player classes

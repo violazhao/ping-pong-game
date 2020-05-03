@@ -5,7 +5,8 @@
 
 #include <cinder/app/App.h>
 #include <pretzel/PretzelGui.h>
-
+#include <mylibrary/leaderboard.h>
+#include <mylibrary/player.h>
 
 namespace myapp {
 
@@ -16,6 +17,9 @@ class MyApp : public cinder::app::App {
   void update() override;
   void draw() override;
   void keyDown(cinder::app::KeyEvent) override;
+
+private:
+    mylibrary::LeaderBoard leaderboard_;
 
 private:
     void DrawBackground() const;

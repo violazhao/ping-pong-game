@@ -8,14 +8,17 @@
 
 namespace myapp {
 
-    using cinder::Color;
-    using cinder::ColorA;
-    using cinder::Rectf;
-    using cinder::TextBox;
-    using cinder::app::KeyEvent;
-    using namespace std;
+using cinder::Color;
+using cinder::ColorA;
+using cinder::Rectf;
+using cinder::TextBox;
+using cinder::app::KeyEvent;
+using namespace std;
 
-MyApp::MyApp() { }
+const char kDbPath[] = "app.db";
+
+MyApp::MyApp()
+    : leaderboard_{cinder::app::getAssetPath(kDbPath).string()} {}
 
 void MyApp::setup() {
     /*gui = pretzel::PretzelGui::create("Puzzle settings");
