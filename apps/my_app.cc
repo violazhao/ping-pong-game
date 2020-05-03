@@ -14,7 +14,6 @@ using cinder::Rectf;
 using cinder::TextBox;
 using cinder::app::KeyEvent;
 using mylibrary::Direction;
-using mylibrary::Location;
 using namespace std;
 
 const char kDbPath[] = "app.db";
@@ -104,25 +103,15 @@ void MyApp::keyDown(KeyEvent event) {
         case KeyEvent::KEY_UP:
         case KeyEvent::KEY_k:
         case KeyEvent::KEY_w: {
-            engine_.SetDirection(Direction::kLeft);
+            paddle1_y1 = paddle1_y1 - 30;
+            paddle1_y2 = paddle1_y2 - 30;
             break;
         }
         case KeyEvent::KEY_DOWN:
         case KeyEvent::KEY_j:
         case KeyEvent::KEY_s: {
-            engine_.SetDirection(Direction::kRight);
-            break;
-        }
-        case KeyEvent::KEY_LEFT:
-        case KeyEvent::KEY_h:
-        case KeyEvent::KEY_a: {
-            engine_.SetDirection(Direction::kUp);
-            break;
-        }
-        case KeyEvent::KEY_RIGHT:
-        case KeyEvent::KEY_l:
-        case KeyEvent::KEY_d: {
-            engine_.SetDirection(Direction::kDown);
+            paddle1_y1 = paddle1_y1 + 30;
+            paddle1_y2 = paddle1_y2 + 30;
             break;
         }
     }

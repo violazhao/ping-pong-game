@@ -40,14 +40,14 @@ private:
     int ball_speed = 8;
 
     float paddle1_x1 = getWindowWidth()/1.06f-5;
-    float paddle1_y1 = getWindowHeight()/2-30.0f;
+    float paddle1_y1 = getWindowHeight()/2-40.0f;
     float paddle1_x2 = getWindowWidth()/1.06f+5;
-    float paddle1_y2 = getWindowHeight()/2+30.0f;
+    float paddle1_y2 = getWindowHeight()/2+40.0f;
 
     float paddle2_x1 = getWindowWidth()/20.0f-5;
-    float paddle2_y1 = getWindowHeight()/2-30.0f;
+    float paddle2_y1 = getWindowHeight()/2-40.0f;
     float paddle2_x2 = getWindowWidth()/20.0f+5;
-    float paddle2_y2 = getWindowHeight()/2+30.0f;
+    float paddle2_y2 = getWindowHeight()/2+40.0f;
 
     pretzel::PretzelGuiRef gui;
 };
