@@ -182,6 +182,14 @@ void MyApp::DrawPaddleTwo() const {
 void MyApp::UpdateBall() {
     ball_xpos += ball_xdir * ball_speed;
     ball_ypos += ball_ydir * ball_speed;
+    /*if (ball_xpos < 0) {
+        ball_xpos = 0;
+        ball_xdir = fabs(ball_xdir);
+    }
+    if (ball_xpos > getWindowWidth()) {
+        ball_xpos = getWindowWidth();
+        ball_xdir = -fabs(ball_xdir);
+    }*/
     if (ball_ypos < 0) {
         ball_ypos = 0;
         ball_ydir = fabs(ball_ydir);
