@@ -17,7 +17,6 @@ using std::vector;
 
 namespace myapp {
 
-DEFINE_uint32(speed, 50, "the speed (delay) of the game");
 DEFINE_string(name, "CS126SP20", "the name of the player");
 
 const int kSamples = 8;
@@ -26,7 +25,7 @@ const int kHeight = 500;
 
 void ParseArgs(vector<string>* args) {
     gflags::SetUsageMessage(
-            "Play a game of Snake. Pass --helpshort for options.");
+            "Play a game of Pong. Pass --helpshort for options.");
     int argc = static_cast<int>(args->size());
 
     vector<char*> argvs;
@@ -42,7 +41,7 @@ void SetUp(App::Settings* settings) {
     vector<string> args = settings->getCommandLineArgs();
     ParseArgs(&args);
     settings->setWindowSize(kWidth, kHeight);
-    settings->setTitle("My CS 126 Application");
+    settings->setTitle("Pong Game");
     std::srand(std::time(0));
 }
 
