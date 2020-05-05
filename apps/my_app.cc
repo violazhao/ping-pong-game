@@ -29,7 +29,6 @@ using std::chrono::system_clock;
 using namespace std;
 
 const size_t kLimit = 3;
-const seconds kCountdownTime = seconds(10);
 const char kDbPath[] = "app.db";
 #if defined(CINDER_COCOA_TOUCH)
 const char kNormalFont[] = "Arial";
@@ -46,13 +45,11 @@ const char kDifferentFont[] = "Papyrus";
 #endif
 
 DECLARE_string(name);
-DECLARE_uint32(speed);
 
 MyApp::MyApp()
     : leaderboard_{cinder::app::getAssetPath(kDbPath).string()},
     player_name_{FLAGS_name},
     printed_game_over_{false},
-    speed_{FLAGS_speed},
     state_{GameState::kPlaying},
     time_left_{0} {}
 
@@ -81,31 +78,8 @@ void MyApp::update() {
         return;
     }
 
-    const auto time = system_clock::now();
     if (paddle1_score_ == 2 || paddle2_score_ == 10) {
-        // taken from snake
-        if (state_ != GameState::kCountdown) {
-            state_ = GameState::kCountdown;
-            last_intact_time_ = time;
-        }
-
-        ball_speed = 10;
-
-        // We must be in countdown.
-        const auto time_in_countdown = time - last_intact_time_;
-        if (time_in_countdown >= kCountdownTime) {
-            state_ = GameState::kGameOver;
-        }
-
-        using std::chrono::seconds;
-        const auto time_left_s =
-                duration_cast<seconds>(kCountdownTime - time_in_countdown);
-        time_left_ = static_cast<size_t>(
-                std::min(kCountdownTime.count() - 1, time_left_s.count()));
-
-        if (time - last_time_ > std::chrono::milliseconds(speed_)) {
-            last_time_ = time;
-        }
+        state_ = GameState::kGameOver;
     }
 
     UpdateBall();
@@ -117,7 +91,9 @@ void MyApp::draw() {
     gui->draw();*/
 
     if (state_ == GameState::kGameOver) {
-        if (!printed_game_over_) cinder::gl::clear(Color(1, 1, 1));
+        if (!printed_game_over_) {
+            cinder::gl::clear(Color(1, 0, 0));
+        }
         DrawGameOver();
         return;
     }
@@ -129,10 +105,6 @@ void MyApp::draw() {
     DrawBall();
     DrawPaddleOne();
     DrawPaddleTwo();
-
-    if (state_ == GameState::kCountdown) {
-        DrawCountDown();
-    }
 }
 
 // taken from snake
@@ -155,24 +127,11 @@ void PrintText(const string& text, const Color& color, const cinder::ivec2& size
     cinder::gl::draw(texture, locp);
 }
 
-// taken from snake
-float MyApp::PercentageOver() const {
-    if (state_ != GameState::kCountdown) return 0.;
-
-    using std::chrono::milliseconds;
-    const double elapsed_time =
-            duration_cast<milliseconds>(system_clock::now() - last_intact_time_)
-                    .count();
-    const double countdown_time = milliseconds(kCountdownTime).count();
-    const double percentage = elapsed_time / countdown_time;
-    return static_cast<float>(percentage);
-}
-
 void MyApp::DrawBackground() const {
     cinder::gl::clear(Color(0, 0, 0));
 }
 
-// took from snake
+// taken from snake
 void MyApp::DrawGameOver() {
     if (printed_game_over_) return;
     if (top_players_.empty()) return;
@@ -218,17 +177,6 @@ void MyApp::DrawPaddleOne() const {
 void MyApp::DrawPaddleTwo() const {
     cinder::gl::color(1, 1, 1);
     cinder::gl::drawSolidRect(Rectf(paddle2_x1, paddle2_y1, paddle2_x2, paddle2_y2));
-}
-
-// taken from snake
-void MyApp::DrawCountDown() const {
-    const float percentage = PercentageOver();
-    const string text = std::to_string(time_left_);
-    const Color color = {1 - percentage, 0, 0};
-    const cinder::ivec2 size = {50, 50};
-    const cinder::vec2 loc = {50, 50};
-
-    PrintText(text, color, size, loc);
 }
 
 void MyApp::UpdateBall() {
