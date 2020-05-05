@@ -92,7 +92,7 @@ void MyApp::draw() {
 
     if (state_ == GameState::kGameOver) {
         if (!printed_game_over_) {
-            cinder::gl::clear(Color(1, 0, 0));
+            cinder::gl::clear(Color(0, 0, 0));
         }
         DrawGameOver();
         return;
@@ -141,7 +141,8 @@ void MyApp::DrawGameOver() {
     const Color color = Color::white();
 
     size_t row = 0;
-    PrintText("Game Over", color, size, center);
+    PrintText("Game Over", color, size, {center.x, center.y - 200});
+    PrintText("Top 3 Scores:", color, size, {center.x, center.y - 100});
     for (const mylibrary::Player& player : top_players_) {
         std::stringstream ss;
         ss << player.name << " - " << player.score;
