@@ -7,7 +7,6 @@
 #include <pretzel/PretzelGui.h>
 #include <mylibrary/leaderboard.h>
 #include <mylibrary/player.h>
-#include <mylibrary/engine.h>
 
 namespace myapp {
 
@@ -21,7 +20,6 @@ class MyApp : public cinder::app::App {
 
 private:
     mylibrary::LeaderBoard leaderboard_;
-    mylibrary::Engine engine_;
 
 private:
     void DrawBackground() const;

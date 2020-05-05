@@ -13,7 +13,6 @@ using cinder::ColorA;
 using cinder::Rectf;
 using cinder::TextBox;
 using cinder::app::KeyEvent;
-using mylibrary::Direction;
 using namespace std;
 
 const char kDbPath[] = "app.db";
