@@ -3,8 +3,18 @@
 #include "my_app.h"
 
 #include <cinder/app/App.h>
+#include <cinder/Font.h>
+#include <cinder/Text.h>
+#include <cinder/gl/draw.h>
+#include <cinder/gl/gl.h>
 #include <pretzel/PretzelGui.h>
+#include <gflags/gflags.h>
 #include <mylibrary/player.h>
+
+#include <algorithm>
+#include <chrono>
+#include <cmath>
+#include <string>
 
 namespace myapp {
 
@@ -16,6 +26,19 @@ using cinder::app::KeyEvent;
 using namespace std;
 
 const char kDbPath[] = "app.db";
+#if defined(CINDER_COCOA_TOUCH)
+const char kNormalFont[] = "Arial";
+const char kBoldFont[] = "Arial-BoldMT";
+const char kDifferentFont[] = "AmericanTypewriter";
+#elif defined(CINDER_LINUX)
+const char kNormalFont[] = "Arial Unicode MS";
+const char kBoldFont[] = "Arial Unicode MS";
+const char kDifferentFont[] = "Purisa";
+#else
+const char kNormalFont[] = "Arial";
+const char kBoldFont[] = "Arial Bold";
+const char kDifferentFont[] = "Papyrus";
+#endif
 
 MyApp::MyApp()
     : leaderboard_{cinder::app::getAssetPath(kDbPath).string()} {}
@@ -40,14 +63,42 @@ void MyApp::draw() {
     gui->draw();*/
     cinder::gl::clear();
     DrawBackground();
+    DrawScore();
     DrawNet();
     DrawBall();
     DrawPaddleOne();
     DrawPaddleTwo();
 }
 
+void PrintText(const string& text, const Color& color, const cinder::ivec2& size,
+               const cinder::vec2& loc) {
+    cinder::gl::color(color);
+
+    auto box = TextBox()
+            .alignment(TextBox::CENTER)
+            .font(cinder::Font(kNormalFont, 30))
+            .size(size)
+            .color(color)
+            .backgroundColor(ColorA(0, 0, 0, 0))
+            .text(text);
+
+    const auto box_size = box.getSize();
+    const cinder::vec2 locp = {loc.x - box_size.x / 2, loc.y - box_size.y / 2};
+    const auto surface = box.render();
+    const auto texture = cinder::gl::Texture::create(surface);
+    cinder::gl::draw(texture, locp);
+}
+
 void MyApp::DrawBackground() const {
     cinder::gl::clear(Color(0, 0, 0));
+}
+
+void MyApp::DrawScore() const {
+    const Color color = Color::white();
+    const cinder::ivec2 size = {500, 50};
+    const cinder::vec2 center = getWindowCenter();
+    PrintText(to_string(paddle1_score), color, size, {center.x + 250, center.y - 200});
+    PrintText(to_string(paddle2_score), color, size, {center.x - 250, center.y - 200});
 }
 
 void MyApp::DrawNet() const {
@@ -91,10 +142,12 @@ void MyApp::UpdateBall() {
     }
     if (ball_xpos > paddle1_x1 && ball_ypos > paddle1_y1 && ball_xpos > paddle1_x2 && ball_ypos < paddle1_y2) {
         ball_xpos = paddle1_x1;
+        paddle1_score++;
         ball_xdir = -fabs(ball_xdir);
     }
     if (ball_xpos < paddle2_x1 && ball_ypos > paddle2_y1 && ball_xpos < paddle2_x2 && ball_ypos < paddle2_y2) {
         ball_xpos = paddle2_x2;
+        paddle2_score++;
         ball_xdir = fabs(ball_xdir);
     }
 }

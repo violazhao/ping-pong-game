@@ -23,6 +23,7 @@ private:
 
 private:
     void DrawBackground() const;
+    void DrawScore() const;
     void DrawNet() const;
     void DrawBall() const;
     void DrawPaddleOne() const;
@@ -30,6 +31,9 @@ private:
     void UpdateBall();
 
 private:
+    int paddle1_score = 0;
+    int paddle2_score = 0;
+
     float ball_radius = 10;
     float ball_xpos = getWindowWidth()/2;
     float ball_ypos = getWindowHeight()/2;
