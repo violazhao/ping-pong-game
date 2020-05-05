@@ -10,3 +10,4 @@
 - **4/26/20** Got the ball to bounce around the screen
 - **4/27/20** Got the ball to bounce off the paddles
 - **5/2/20** Set up SQLite3 and created leaderboard and player classes; got the paddles to move up and down
+- **5/5/20** Display and keep scores of both players on the screen
