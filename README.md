@@ -1,11 +1,11 @@
-# Final Project - Pong Game
+# Final Project - Ping Pong Game
 
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![docs](https://img.shields.io/badge/docs-yes-brightgreen)](docs/README.md)
 
 **Author**: Viola Zhao - [`violaz2@illinois.edu`](mailto:example@illinois.edu)
 
-# Pong
+# Ping Pong
 
 ![](assets/Pong.jpg)
 ![](assets/GameOver.jpg)
