@@ -7,3 +7,5 @@ Read [this document](https://cliutils.gitlab.io/modern-cmake/chapters/basics/str
 layout.
 
 **Author**: Viola Zhao - [`violaz2@illinois.edu`](mailto:example@illinois.edu)
+
+![](https://imgur.com/IdxZhFK)
