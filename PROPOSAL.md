@@ -3,7 +3,7 @@
 **Author**: Viola Zhao - [`violaz2@illinois.edu`](mailto:example@illinois.edu)
 
 ---
-For my final project, I want to make a ping pong game, because I loved to play ping pong as a kid. I plan on using [PretzelGUI](https://github.com/cwhitney/PretzelGui) in order to make finding the positions of the paddles and ball easier, and I also plan on using [SQLiteModernCPP and SQLite3](https://www.sqlite.org/index.html) to keep score.
+For my final project, I want to make a ping pong game, because I loved to play ping pong as a kid. I plan on using [PretzelGUI](https://github.com/cwhitney/PretzelGui) in order to make finding the positions of the paddles and ball easier, and I also plan on using [SQLiteModernCPP](https://github.com/SqliteModernCpp/sqlite_modern_cpp) and [SQLite3](https://www.sqlite.org/index.html) to keep score.
 
 Rough timeline of how I will get this done-
 

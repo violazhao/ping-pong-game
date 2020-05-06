@@ -15,8 +15,8 @@
 - [cmake](https://cmake.org/)
 - [cinder](https://libcinder.org/download)
 - [SQLiteModernCPP + SQLite3](https://www.sqlite.org/index.html)
+- [SQLiteModernCPP](https://github.com/SqliteModernCpp/sqlite_modern_cpp)
 - [gflags](https://github.com/gflags/gflags)
-- [PretzelGUI](https://github.com/cwhitney/PretzelGui)
 
 ## Controls
 
