@@ -7,6 +7,10 @@
 
 # Ping Pong
 
+### Introduction
+
+For my final project, I decided to make a ping pong game, because I loved to play ping pong as a kid.
+
 ![](assets/Pong.jpg)
 ![](assets/GameOver.jpg)
 
