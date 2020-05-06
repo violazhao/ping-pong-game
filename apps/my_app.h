@@ -4,6 +4,7 @@
 #define FINALPROJECT_APPS_MYAPP_H_
 
 #include <cinder/app/App.h>
+#include <cinder/audio/Audio.h>
 #include <pretzel/PretzelGui.h>
 #include <mylibrary/leaderboard.h>
 #include <mylibrary/player.h>
@@ -61,6 +62,9 @@ private:
     float paddle2_y1 = getWindowHeight()/2-40.0f;
     float paddle2_x2 = getWindowWidth()/20.0f+5;
     float paddle2_y2 = getWindowHeight()/2+40.0f;
+
+    cinder::audio::SourceFileRef bgm = cinder::audio::load(cinder::app::loadAsset("Pong.wav"));
+    cinder::audio::VoiceRef play_bgm = cinder::audio::Voice::create(bgm);
 
     pretzel::PretzelGuiRef gui;
 };

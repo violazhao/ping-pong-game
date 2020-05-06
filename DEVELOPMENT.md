@@ -23,4 +23,5 @@
     - Managed to display and keep scores of both players on the screen
 - **5/5/20**
     - Created Game Over function for when the ball hits either the left or right wall
+    - Added background music
     - Created [PROPOSAL.md](PROPOSAL.md) and updated [README.md](README.md)

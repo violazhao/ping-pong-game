@@ -41,7 +41,7 @@ void SetUp(App::Settings* settings) {
     vector<string> args = settings->getCommandLineArgs();
     ParseArgs(&args);
     settings->setWindowSize(kWidth, kHeight);
-    settings->setTitle("Pong Game");
+    settings->setTitle("Ping Pong Game");
     std::srand(std::time(0));
 }
 

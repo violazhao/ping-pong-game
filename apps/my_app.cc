@@ -54,6 +54,7 @@ MyApp::MyApp()
     time_left_{0} {}
 
 void MyApp::setup() {
+    play_bgm->start();
     /*gui = pretzel::PretzelGui::create("Puzzle settings");
     gui->setSize(cinder::vec2(180, 150));
     gui->setPos(cinder::vec2(0, 0));
@@ -65,6 +66,7 @@ void MyApp::setup() {
 
 void MyApp::update() {
     if (state_ == GameState::kGameOver) {
+        play_bgm->stop();
         if (top_players_.empty()) {
             if (paddle1_score_ > paddle2_score_) {
                 leaderboard_.AddScoreToLeaderBoard({player_name_, static_cast<size_t>(paddle1_score_)});
@@ -90,6 +92,7 @@ void MyApp::draw() {
     cinder::gl::drawSolidCircle(cinder::vec2(getWindowCenter()), mRadius);
     gui->draw();*/
 
+    // taken from snake
     if (state_ == GameState::kGameOver) {
         if (!printed_game_over_) {
             cinder::gl::clear(Color(0, 0, 0));
