@@ -1,4 +1,4 @@
-// Copyright (c) 2020 [Your Name]. All rights reserved.
+// Copyright (c) 2020 Viola Zhao. All rights reserved.
 
 #include "my_app.h"
 
@@ -55,13 +55,6 @@ MyApp::MyApp()
 
 void MyApp::setup() {
     play_bgm->start();
-    /*gui = pretzel::PretzelGui::create("Puzzle settings");
-    gui->setSize(cinder::vec2(180, 150));
-    gui->setPos(cinder::vec2(0, 0));
-    gui->addSlider("Puzzle Size", &mRadius, 2, 100);
-    gui->addSaveLoad();
-    gui->loadSettings();
-    ci::gl::enableAlphaBlending();*/
 }
 
 void MyApp::update() {
@@ -88,11 +81,6 @@ void MyApp::update() {
 }
 
 void MyApp::draw() {
-    /*cinder::gl::clear(cinder::Color(1, 1, 1));
-    cinder::gl::drawSolidCircle(cinder::vec2(getWindowCenter()), mRadius);
-    gui->draw();*/
-
-    // taken from snake
     if (state_ == GameState::kGameOver) {
         if (!printed_game_over_) {
             cinder::gl::clear(Color(0, 0, 0));
@@ -110,7 +98,6 @@ void MyApp::draw() {
     DrawPaddleTwo();
 }
 
-// taken from snake
 void PrintText(const string& text, const Color& color, const cinder::ivec2& size,
                const cinder::vec2& loc) {
     cinder::gl::color(color);
@@ -134,7 +121,6 @@ void MyApp::DrawBackground() const {
     cinder::gl::clear(Color(0, 0, 0));
 }
 
-// taken from snake
 void MyApp::DrawGameOver() {
     if (printed_game_over_) return;
     if (top_players_.empty()) return;
@@ -186,14 +172,6 @@ void MyApp::DrawPaddleTwo() const {
 void MyApp::UpdateBall() {
     ball_xpos += ball_xdir * ball_speed;
     ball_ypos += ball_ydir * ball_speed;
-    /*if (ball_xpos < 0) {
-        ball_xpos = 0;
-        ball_xdir = fabs(ball_xdir);
-    }
-    if (ball_xpos > getWindowWidth()) {
-        ball_xpos = getWindowWidth();
-        ball_xdir = -fabs(ball_xdir);
-    }*/
     if (ball_ypos < 0) {
         ball_ypos = 0;
         ball_ydir = fabs(ball_ydir);
