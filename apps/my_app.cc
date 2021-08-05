@@ -7,7 +7,6 @@
 #include <cinder/Text.h>
 #include <cinder/gl/draw.h>
 #include <cinder/gl/gl.h>
-#include <pretzel/PretzelGui.h>
 #include <gflags/gflags.h>
 #include <mylibrary/player.h>
 
