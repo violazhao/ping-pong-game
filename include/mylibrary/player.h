@@ -1,6 +1,5 @@
 //
-// Created by Viola F Zhao on 5/2/20.
-// taken from snake
+// Created by Viola Zhao on 5/2/20.
 
 #ifndef FINALPROJECT_PLAYER_H
 #define FINALPROJECT_PLAYER_H
