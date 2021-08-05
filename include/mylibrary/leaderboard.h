@@ -1,5 +1,4 @@
-// Copyright (c) 2020 [Your Name]. All rights reserved.
-// taken from snake
+// Copyright (c) 2020 Viola Zhao. All rights reserved.
 
 #ifndef FINALPROJECT_MYLIBRARY_EXAMPLE_H_
 #define FINALPROJECT_MYLIBRARY_EXAMPLE_H_
