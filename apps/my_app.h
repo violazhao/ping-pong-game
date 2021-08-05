@@ -5,7 +5,6 @@
 
 #include <cinder/app/App.h>
 #include <cinder/audio/Audio.h>
-#include <pretzel/PretzelGui.h>
 #include <mylibrary/leaderboard.h>
 #include <mylibrary/player.h>
 
@@ -66,7 +65,6 @@ private:
     cinder::audio::SourceFileRef bgm = cinder::audio::load(cinder::app::loadAsset("Pong.wav"));
     cinder::audio::VoiceRef play_bgm = cinder::audio::Voice::create(bgm);
 
-    pretzel::PretzelGuiRef gui;
 };
 
 }  // namespace myapp
